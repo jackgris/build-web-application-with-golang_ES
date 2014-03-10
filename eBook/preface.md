@@ -6,7 +6,7 @@
 	- 1.5. [Resumen](01.5.md)
 - 2.[Conocimientos básicos sobre Go](02.0.md)
 	- 2.1. ["Hello, Go"](02.1.md)
-	- 2.2. [Creación de Go](02.2.md)
+	- 2.2. [Principios de Go](02.2.md)
 	- 2.3. [Sentencias de control y funciones](02.3.md)
 	- 2.4. [struct](02.4.md)
 	- 2.5. [Orientado a objetos](02.5.md)
