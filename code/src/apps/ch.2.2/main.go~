@@ -255,7 +255,7 @@ func show_map() {
 	fmt.Println("map numbers =", numbers)
 	// Imprime el valor de la llave "three" osea 3
 	fmt.Println("The third number is: ", numbers["three"]) 
-	// map retorna dos valores. Y podemos utilizar el segundo valor ok para saber 		// si existe un elemento en nuestro map.
+	// map retorna dos valores. Y podemos utilizar el segundo valor, ok is false，true otherwise.
 	csharpRating, ok := rating["C#"]
 	if ok {
 		fmt.Println("C# is in the map and its rating is ", csharpRating)
