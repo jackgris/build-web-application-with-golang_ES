@@ -1,6 +1,6 @@
-// Example code for Chapter 1.2 from "Build Web Application with Golang"
-// Purpose: Shows how to create a simple package called `mymath`
-// This package must be imported from another go file to run.
+// Código de ejemplo para el capítulo 1.2 del "Build aplicación Web con Golang"
+// Objetivo: Muestra cómo crear un paquete sencillo llamado `MyMath`
+// Este paquete puede  ser importado de otro archivo para que funcione.
 package mymath
 
 func Sqrt(x float64) float64 {
