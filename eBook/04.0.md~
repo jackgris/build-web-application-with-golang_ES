@@ -10,9 +10,9 @@ La forma es el área que contiene los elementos del formulario. Los usuarios pue
 	...
 	</form>
 
-Go tiene muchas funciones convenientes para hacer frente y dar forma a una aplicación, al igual que usted puede conseguir fácilmente los datos del formulario de peticiones HTTP, y no son fáciles de integrar a sus propias aplicaciones Web. En la sección 4.1, vamos a hablar acerca de cómo manejar los datos del formulario en Go, y porque no se debe de confiar en todos los datos de los clientes, usted tiene que verificar los datos antes de usarlos. Después de eso, vamos a mostrar algunos ejemplos acerca de la verificación de los datos del formulario en la sección 4.2.
+Go tiene muchas funciones convenientes para hacer frente a forma de aplicación, al igual que usted puede conseguir fácilmente los datos del formulario de peticiones HTTP, y no son fáciles de integrar a sus propias aplicaciones Web. En la sección 4.1, vamos a hablar acerca de cómo manejar los datos del formulario en Go, y porque no se puede creer que todos los datos de los clientes, usted tiene que verificar los datos antes de usarlos. Después de eso, vamos a mostrar algunos ejemplos acerca de la verificación de los datos del formulario en la sección 4.2.
 
-Decimos que HTTP no tiene estado, ¿cómo podemos identificar que estos formularios son de un mismo usuario? Y la manera de asegurarse de que un form sólo puede presentarse una vez? Tenemos una explicación más detallada acerca delcookie (cookie es la información que se puede guardar en el lado del cliente, y poner en el encabezado de la solicitud que se envía con la solicitud al servidor) en ambas secciones 4.3 y 4.4.
+Decimos que HTTP no tiene estado, ¿cómo podemos identificar que estas formas son de un mismo usuario? Y la manera de asegurarse de que una forma sólo puede presentarse una vez? Tenemos una explicación más detallada acerca de la galleta (cookie es la información que se puede guardar en el lado del cliente, y poner en el encabezado de la solicitud que se envía la solicitud al servidor) en ambas secciones 4.3 y 4.4.
 
 Otra gran característica de la forma es subir los archivos. En la sección 4.5, usted aprenderá cómo usar esta característica y controlar el tamaño del archivo antes de que comience la carga en Go.
 

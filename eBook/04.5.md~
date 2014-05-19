@@ -63,11 +63,22 @@ Usted no necesita llamar `r.ParseForm` cuando acceda a otros campos no de archiv
 
 Utilizamos tres pasos para subir archivos de la siguiente manera:
 
+Añadir enctype = "multipart / form-data" al formulario.
+Llame r.ParseMultipartForm en el lado del servidor para guardar el archivo en la memoria o un archivo temporal.
+Llame r.FormFile para obtener el identificador de archivo y guardar en el sistema de archivos.
+El manejador de archivos es el multipart.FileHeader , usa siguiente estructura:
+
+As you can see, we need to call `r.ParseMultipartForm` for uploading files, the argument means the `maxMemory`. After you called `ParseMultipartForm`, file will be saved in your server memory with `maxMemory` size, if the file size is larger than `maxMemory`, rest of data will be saved in system temporary file. You can use `r.FormFile` to get file handle and use `io.Copy` to save to your file system.
+
+You don't need to call `r.ParseForm` when you access other non-file fields in the form because Go will call it when it's necessary. Also call `ParseMultipartForm` once is enough, and no differences for multiple calls.
+
+We use three steps for uploading files as follows:
+
 1. AñadirAdd `enctype="multipart/form-data"` a su form.
 2. Llamar `r.ParseMultipartForm` en el lado del servidor para guardar el archivo en la memoria o un archivo temporal.
 3. Llamar `r.FormFile` para obtener el identificador de archivo y guardar en el sistema de archivos.
 
-El manejador de archivos es `multipart.FileHeader` , usa siguiente estructura:
+The file handler is the `multipart.FileHeader`, it uses following struct:
 
 	type FileHeader struct {
     	Filename string
@@ -77,11 +88,11 @@ El manejador de archivos es `multipart.FileHeader` , usa siguiente estructura:
 
 ![](images/4.5.upload2.png?raw=true)
 
-Figure 4.5 Imprimir la información en el servidor después de archivo recibido
+Figure 4.5 Print information in server after received file.
 
-## Clientes subir archivos
+## Clients upload files
 
-Le mostré el ejemplo del uso de formulario para subir el archivo, podremos pasar por un formulario de cliente para cargar el archivotambien en Go.
+I showed the example of using form to upload file, and we can impersonate a client form to upload file in Go as well.
 
 	package main
 
@@ -99,21 +110,21 @@ Le mostré el ejemplo del uso de formulario para subir el archivo, podremos pasa
 	    bodyBuf := &bytes.Buffer{}
 	    bodyWriter := multipart.NewWriter(bodyBuf)
 	
-	    // Este paso es muy importante
+	    // this step is very important
 	    fileWriter, err := bodyWriter.CreateFormFile("uploadfile", filename)
 	    if err != nil {
 	        fmt.Println("error writing to buffer")
 	        return err
 	    }
 	
-	    // Identificador de archivo abierto
+	    // open file handle
 	    fh, err := os.Open(filename)
 	    if err != nil {
 	        fmt.Println("error opening file")
 	        return err
 	    }
 	
-	    // Iocopy
+	    //iocopy
 	    _, err = io.Copy(fileWriter, fh)
 	    if err != nil {
 	        return err
@@ -136,16 +147,16 @@ Le mostré el ejemplo del uso de formulario para subir el archivo, podremos pasa
 	    return nil
 	}
 
-	// Usando la muestra
+	// sample usage
 	func main() {
 	    target_url := "http://localhost:9090/upload"
 	    filename := "./astaxie.pdf"
 	    postFile(filename, target_url)
 	}
 
-El ejemplo anterior muestra cómo utilizar el cliente para cargar el archivo, utiliza `multipart.Write` escribir el archivo en la memoria caché y lo envía al servidor a través del método POST.
+The above example shows you how to use client to upload file, it uses `multipart.Write` to write file in cache and sends to server through POST method.
 
-Si usted tiene otra necesidad campo para escribir en datos como el nombre de usuario, llame `multipart.WriteField` según sea necesario.
+If you have other field need to write into data like user name, call `multipart.WriteField` as needed.
 
 ## Links
 

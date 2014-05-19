@@ -97,7 +97,9 @@ El tipo de `request.Form` es `url.Value` , que guarda los datos con el formato `
 	fmt.Println(v.Get("friend"))
 	fmt.Println(v["friend"])
 
-**Tips** Request tiene posibilidad de acceder a los datos del formulario mediante el método `FormValue()` . Por ejemplo, puede cambiar `r.Form["username"]` a `r.FormValue("username")` , y pide `r.ParseForm` automáticamente. Observe que se devuelve el primer valor si hay argumentos con el mismo nombre, y devuelve cadena vacía si no hay tal argumento.
+**Tips** Consejos Request tiene posibilidad de acceder a los datos del formulario mediante el método FormValue () . Por ejemplo, puede cambiar r.Form ["username"] a r.FormValue ("nombre de usuario") , y pide r.ParseForm automáticamente. Observe que se devuelve el primer valor si hay argumentos con el mismo nombre, y devuelve cadena vacía si no hay tal argumento.
+
+Request has ability to access form data by method `FormValue()`. For example, you can change `r.Form["username"]` to `r.FormValue("username")`, and it calls `r.ParseForm` automatically. Notice that it returns the first value if there are arguments with same name, and it returns empty string if there is no such argument.
 
 ## Links
 

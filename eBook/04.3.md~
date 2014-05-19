@@ -21,13 +21,13 @@ Vamos a cambiar el ejemplo de la sección 4.1:
 	fmt.Println("password:", template.HTMLEscapeString(r.Form.Get("password")))
 	template.HTMLEscape(w, []byte(r.Form.Get("username"))) // responded to clients
 
-Si tratamos de nombre de usuario de entrada como `<script>alert()</script>` , vamos a ver el siguiente contenido en el navegador:
+If we try to input user name as `<script>alert()</script>`, we will see following content in the browser:
 
 ![](images/4.3.escape.png?raw=true)
 
 Figure 4.3 JavaScript after escaped
 
-Funciones en el paquete `html/template` plantilla ayuda a escapar de todas las etiquetas HTML, ¿y si lo que desea es imprimir `<script>alert()</script>` en los navegadores? Usted debe utilizar `text/template` en su lugar.
+Functions in package `html/template` help you escape all HTML tags, what if you just want to print `<script>alert()</script>` to browsers? You should use `text/template` instead.
 
 	import "text/template"
 	...
@@ -38,15 +38,15 @@ Output:
 
 	Hello, <script>alert('you have been pwned')</script>!
 
-O puede utilizar el tipo `template.HTML` : 
-El contenido de la variable no será escapado si su tipo es `template.HTML` .
+Or you can use type `template.HTML`: 
+Variable content will not be escaped if it's type is `template.HTML`.
 
 	import "html/template"
 	...
 	t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
 	err = t.ExecuteTemplate(out, "T", template.HTML("<script>alert('you have been pwned')</script>"))
 
-Salida:
+Output:
 
 	Hello, <script>alert('you have been pwned')</script>!
 
@@ -57,7 +57,7 @@ One more example of escape
 	t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
 	err = t.ExecuteTemplate(out, "T", "<script>alert('you have been pwned')</script>")
 
-salida:
+Output:
 
 	Hello, &lt;script&gt;alert(&#39;you have been pwned&#39;)&lt;/script&gt;!
 

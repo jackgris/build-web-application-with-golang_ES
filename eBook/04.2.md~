@@ -1,10 +1,10 @@
-# 4.2 Verificacion de entradas
+# 4.2 Verification of inputs
 
 El principio más importante en el desarrollo web es que no se puede confiar en nada de formulario de usuario, usted tiene que verificar todos los datos antes de usarlos. Usted puede saber muchas páginas web son invadidas por este problema, que es simple, pero crucial.
 
 Hay dos maneras de verificar los datos de forma que comúnmente utilizado, el que es la verificación JavaScript en front-end, y otra es la verificación del servidor de back-end. En esta sección, vamos a hablar de la comprobación del servidor en el desarrollo web.
 
-## Los campos necesarios
+## Required fields
 
 A veces le preguntas a los usuarios de entrada de algunos campos, pero que no lo hace, por ejemplo, que necesita nombre de usuario en la sección anterior. Puede utilizar la función `len` para obtener la longitud de campo de entrada de informacion de los usuarios.
 
@@ -14,7 +14,7 @@ A veces le preguntas a los usuarios de entrada de algunos campos, pero que no lo
 
 `r.Form` utiliza diferentes tratamientos de diferentes tipos de elementos de formulario cuando son espacios en blanco. Para la caja de texto vacío, área de texto y archivo de carga, devuelve cadena vacía; casilla de verificación y botón de radio, ni siquiera crear elementos correspondientes, y obtendrá los errores si se intenta acceder a él. Por lo tanto, será mejor que usamos `r.Form.Get()` para obtener los valores presentados porque siempre vuelve vacía si el valor no existe. Por otro lado, `r.Form.Get()` sólo puede obtener un valor de campo cada vez, así que tienes que usar `r.Form` para obtener valores en un map.
 
-## Numeros
+## Numbers
 
 A veces sólo se necesita un número para el valor del campo. Por ejemplo, usted necesita la edad de los usuarios, al igual que 50 o 10, en lugar de "la edad suficiente" o "joven". Si necesitamos números positivos, podemos convertir a tipo int primero y procesarlos.
 
@@ -36,7 +36,7 @@ Otra forma de hacerlo es usando la expresión regular.
 	
 Con fines de alto rendimiento, la expresión regular no es una manera eficiente, pero la expresión regular simple es lo suficientemente rápido. Si sabes expresión regular antes, usted debe es una forma muy conveniente para verificar los datos. Observe que Go utiliza [RE2](http://code.google.com/p/re2/wiki/Syntax) , se admiten todos los caracteres UTF-8.
 
-## China
+## Chinese
 
 A veces necesitamos a los usuarios introducir su nombre chino, tenemos que verificar que utilizan todos los chinos en lugar de caracteres aleatorios. Para la verificación de China, la expresión regular es la única manera.
 
@@ -44,17 +44,17 @@ A veces necesitamos a los usuarios introducir su nombre chino, tenemos que verif
     	return false
 	}
 
-## Letras inglesas
+## English letters
 
-A veces necesitamos que los usuarios de entrada de las letras inglesas. Por ejemplo, necesitamos de alguien nombre Inglés, como astaxie lugar de 谢 asta. Podemos utilizar simplemente la expresión regular para hacer la verificación.
+Sometimes we need users to input English letters. For example, we need someone's English name, like astaxie instead of asta谢. We can easily use regular expression to do verification.
 
 	if m, _ := regexp.MatchString("^[a-zA-Z]+$", r.Form.Get("engname")); !m {
     	return false
 	}
 
-## Dirección de correo electrónico
+## E-mail address
 
-Si usted quiere saber si la entrada de los usuarios la dirección de correo electrónico válida, puede utilizar siguiente expresión regular:
+If you want to know if users input valid E-mail address, you can use following regular expression:
 
 	if m, _ := regexp.MatchString(`^([\w\.\_]{2,10})@(\w{1,}).([a-z]{2,4})$`, r.Form.Get("email")); !m {
     	fmt.Println("no")
@@ -62,11 +62,11 @@ Si usted quiere saber si la entrada de los usuarios la dirección de correo elec
     	fmt.Println("yes")
 	}
 
-## Lista desplegable
+## Drop down list
 
-Cuando necesitamos artículo en nuestra lista desplegable, pero tenemos algunos valores que son realizados por hackers, ¿cómo podemos evitarlo?
+When we need item in our drop down list, but we get some values that are made by hackers, how can we prevent it? 
 
-Supongamos que tenemos siguiente `<select>`:
+Suppose we have following `<select>`:
 
 	<select name="fruit">
 	<option value="apple">apple</option>
@@ -74,7 +74,7 @@ Supongamos que tenemos siguiente `<select>`:
 	<option value="banane">banane</option>
 	</select>
 
-A continuación, utilizamos siguiente manera de verificar:
+Then, we use following way to verify:
 
 	slice:=[]string{"apple","pear","banane"}
 
@@ -85,16 +85,16 @@ A continuación, utilizamos siguiente manera de verificar:
 	}
 	return false
 
-Todas las funciones que mostré anteriormente están en mi proyecto de código abierto para el slice de funcionamiento y el map:  [https://github.com/astaxie/beeku](https://github.com/astaxie/beeku)
+All functions I showed above are in my open source project for operating slice and map: [https://github.com/astaxie/beeku](https://github.com/astaxie/beeku)
 
-## Los botones radio
+## Radio buttons
 
-Si queremos saber el usuario es hombre o mujer, podemos utilizar un botón de radio, devolverá 1 para hombres y 2 para mujeres. Sin embargo, hay un pequeño niño está leyendo el libro sobre HTTP, y enviar a usted 3, tendrá su programa excepción? Así que tenemos que utilizar el mismo camino para lista desplegable para asegurarse de que se espera que todos los valores.
+If we want to know the user is male or female, we may use a radio button, return 1 for male and 2 for female. However, there is a little boy is reading book about HTTP, and send to you 3, will your program have exception? So we need to use same way for drop down list to make sure all values are expected.
 
 	<input type="radio" name="gender" value="1">Male
 	<input type="radio" name="gender" value="2">Female
 
-Y utilizamos siguiente código para hacer la verificación:
+And we use following code to do verification:
 
 	slice:=[]int{1,2}
 
@@ -105,15 +105,15 @@ Y utilizamos siguiente código para hacer la verificación:
 	}
 	return false
 
-## Las casillas de verificación
+## Check boxes
 
-Supongamos que hay algunas casillas de verificación de los intereses de los usuarios, y que no quieren que los valores adicionales también.
+Suppose there are some check boxes for users' interests, and you don't want extra values as well.
 
 	<input type="checkbox" name="interest" value="football">Football
 	<input type="checkbox" name="interest" value="basketball">Basketball
 	<input type="checkbox" name="interest" value="tennis">Tennis
 
-Aquí es un poco diferente en la verificación entre los botones de radio y casillas de verificación porque conseguimos un slice de casillas de verificación.
+Here is a little bit different in verification between radio buttons and check boxes because we get a slice from check boxes.
 
 	slice:=[]string{"football","basketball","tennis"}
 	a:=Slice_diff(r.Form["interest"],slice)
@@ -123,16 +123,16 @@ Aquí es un poco diferente en la verificación entre los botones de radio y casi
 
 	return false 
 
-## Fecha y hora
+## Date and time
 
-Suponga que quiere hacer de entrada a los usuarios de fecha u hora válida. Go tiene paquete `time` para convertir el año, mes, día de tiempo correspondiente, entonces es fácil comprobarlo.
+Suppose you want to make users input valid date or time. Go has package `time` to convert year, month, day to corresponding time, then it's easy to check it.
 
 	t := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
 	fmt.Printf("Go launched at %s\n", t.Local())
 
-Después de que tenía tiempo, se puede utilizar el paquete `time` para más operaciones dependen de sus propósitos.
+After you had time, you can use package `time` for more operations depend on your purposes.
 
-Hablamos acerca de algún tipo de verificación de datos de formulario común en el lado del servidor, espero que entender más acerca de la verificación de datos en el Go, especialmente cómo utilizar expresiones regulares.
+We talked about some common form data verification in server side, I hope you understand more about data verification in Go, especially how to use regular expression.
 
 ## Links
 
