@@ -3,6 +3,10 @@ Se va a dar comienzo a la traducción al español del siguiente libro:
 https://github.com/Unknwon/build-web-application-with-golang_EN
 Este comentario se va a mantener, hasta que se haya finalizado la traducción.
 
+## Aportar a la traducción:
+
+Si usted desea aportar a esta traducción siga las [siguientes instrucciones](./eBook/contribute.md)
+
 ***Construyendo aplicaciones web con Golang***
 =======================================
 ### ***Comentario del traductor***
