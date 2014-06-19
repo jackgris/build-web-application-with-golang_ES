@@ -188,6 +188,26 @@ Ahora si deseamos añadir una imagen que nos dirija a un enlace, debemos hacer u
 
     [![Descripción de la imagen](PATH o ruta a la imagen)](enlace donde deseamos que nos dirija)
 
+**Crear un tabla:**
+
+Básicamente lo unico que se necesita, es utilizar el simbolo `|` en cada reglon que deseemos que se muestre el inicio y fin de un campo de la tabla, vamos a ver un ejemplo:
+
+```
+|*Versión* | *Comentario* |
+|:---------:|:-----------------:|
+|1.0 | Esta es la versión 1 |
+|1.1 | Esta es la versión 2 |
+|2.0 | Esta es la versión 3 |
+```
+
+Con ese código vamos a poder ver una tabla de la siguiente forma:
+
+|*Versión* | *Comentario* |
+|:---------:|:-----------------:|
+|1.0 | Esta es la versión 1 |
+|1.1 | Esta es la versión 2 |
+|2.0 | Esta es la versión 3 |
+
 ## Enlaces
 
 - [Inicio](../README.md)
