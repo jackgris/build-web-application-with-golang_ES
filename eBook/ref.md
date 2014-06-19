@@ -1,6 +1,6 @@
-# Appendix A References
+# Apéndice A Referencias
 
-This book is a summary of my Go experience, some content are from other gophers' either blog or sites. Thanks them!
+Este libro es un resumen de mi experiencia con Go, algunos de los contenidos son de cualquiera de los sitios o blog de otros gophers. Muchas gracias a ellos!
 
 1. [golang blog](http://blog.golang.org)
 2. [Russ Cox blog](http://research.swtch.com/)
@@ -11,3 +11,7 @@ This book is a summary of my Go experience, some content are from other gophers'
 7. [Network programming with Go](http://jan.newmarch.name/go/)
 8. [setup-the-rails-application-for-internationalization](http://guides.rubyonrails.org/i18n.html#setup-the-rails-application-for-internationalization)
 9. [The Cross-Site Scripting (XSS) FAQ](http://www.cgisecurity.com/xss-faq.html)
+
+## Enlaces
+
+- [Indice](preface.md)
