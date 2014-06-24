@@ -11,7 +11,7 @@ Si usted desea aportar a esta traducción siga las [siguientes instrucciones](./
 =======================================
 ### ***Comentario del traductor***
 
-Esta es la versión en español de [《Go Web编程》](https://github.com/astaxie/build-web-application-with-golang), la versión original fue escrita por [AstaXie](https://github.com/astaxie) y esta es traducida por [jackgris](https://github.com/jackgris). Y con la contribución de [carlosjml4](https://github.com/carlosjml4).
+Esta es la versión en español de [《Go Web编程》](https://github.com/astaxie/build-web-application-with-golang), la versión original fue escrita por [AstaXie](https://github.com/astaxie) y esta es traducida por [jackgris](https://github.com/jackgris).Con la contribución de [carlosjml4](https://github.com/carlosjml4).
 
 Este  libro trata sobre como crear aplicaciones web en Go. En los primeros capítulos del libro, el autor va a repasar algunos conocimientos básicos sobre Go. Sin embargo, para obtener una mejor experiencia en la lectura, usted debería tener los conocimientos básicos sobre el lenguaje Go y sobre los conceptos de una aplicación web. Si usted es completamente nuevo en el mundo de la programación, este libro no tiene en cuenta proporcionar el material introductorio suficiente para comenzar.
 
